@@ -8,3 +8,4 @@ queries:
   - insecureHttpRequest.ql
   - detectSuspiciousVariables.ql
   - detectLongStrings.ql
+  - detectDynamicExecution.ql
