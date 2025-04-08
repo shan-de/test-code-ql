@@ -7,5 +7,4 @@ dependencies:
 queries:
   - insecureHttpRequest.ql
   - detectSuspiciousVariables.ql
-  - detectObfuscatedCode.ql
   - detectLongStrings.ql
