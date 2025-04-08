@@ -32,8 +32,8 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: |
-            ./codeql-queries/insecure-http-request.ql  # Path to the insecure HTTP request query
-            ./codeql-queries/detect-long-strings.ql    # Path to the detect long strings query
+            ./codeql-queries/insecure-http-request.ql
+            ./codeql-queries/detect-long-strings.ql
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
