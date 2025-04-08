@@ -1,12 +1,5 @@
 import javascript
 
-/**
- * @name Detect Suspicious Long Strings
- * @description Flags long strings in JavaScript files and checks for suspicious patterns, such as obfuscated or encoded content.
- * @kind problem
- * @problem.severity warning
- * @tags security
- */
 from Literal stringLiteral
 where 
   stringLiteral.getStringValue().length() > 100 and
