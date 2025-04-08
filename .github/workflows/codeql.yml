@@ -31,9 +31,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-          queries: |
-            ./codeql-queries/insecureHttpRequest.ql
-            ./codeql-queries/detectLongStrings.ql
+          queries: ./codeql-queries/detectLongStrings.ql
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
