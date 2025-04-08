@@ -3,6 +3,9 @@ name: "CodeQL Advanced"
 on:
   pull_request:
     branches: [ "development" ]
+    paths:
+      - "**/*.js" # Include all JavaScript files
+      - "**/*.ts" # Include all TypeScript files
 
 jobs:
   analyze:
@@ -17,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript-typescript' ]
+        language: [ 'javascript', 'typescript' ]
 
     steps:
       - name: Checkout repository
