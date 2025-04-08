@@ -1,14 +1,14 @@
 import javascript
 
 /**
+ * @id detect_long_strings
  * @name Detect Long Strings
  * @description Flags long strings in JavaScript files and checks for suspicious patterns, such as obfuscated or encoded content.
  * @kind problem
  * @problem.severity warning
  * @tags security
  */
-from Literal stringLiteral
-where 
+predicate isSuspiciousString(Literal stringLiteral) {
   stringLiteral.getStringValue().length() > 100 and
   (
     // Check for base64-like patterns
@@ -20,4 +20,8 @@ where
     // Check for suspicious keywords (e.g., eval, Function, obfuscation markers)
     stringLiteral.getStringValue().regexpMatch("eval|Function|obfuscate|decode|escape")
   )
+}
+
+from Literal stringLiteral
+where isSuspiciousString(stringLiteral)
 select stringLiteral, "This string is unusually long and contains patterns that may indicate obfuscated or unwanted code."
