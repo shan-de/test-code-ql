@@ -6,6 +6,7 @@ on:
     paths:
       - "**/*.js" # Include all JavaScript files
       - "**/*.ts" # Include all TypeScript files
+      - "webpack.config.js" # Explicitly include Webpack configuration
 
 jobs:
   analyze:
@@ -30,7 +31,9 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-          queries: ./codeql-queries/insecure-http-request.ql  # Path to your custom query
+          queries: |
+            ./codeql-queries/insecure-http-request.ql  # Path to the insecure HTTP request query
+            ./codeql-queries/detect-long-strings.ql    # Path to the detect long strings query
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
