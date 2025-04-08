@@ -4,9 +4,9 @@ on:
   pull_request:
     branches: [ "development" ]
     paths:
-      - "**/*.js"  # Include all JavaScript files
-      - "**/*.ts"  # Include all TypeScript files
-      - "webpack.config.js"  # Include Webpack configuration
+      - "**/*.js" # Include all JavaScript files
+      - "**/*.ts" # Include all TypeScript files
+      - "webpack.config.js" # Explicitly include Webpack configuration
 
 jobs:
   analyze:
@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'typescript' ]
+        language: [ 'javascript' ]
 
     steps:
       - name: Checkout repository
@@ -32,8 +32,8 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: |
-            ./codeql-queries/insecure-http-request.ql
-            ./codeql-queries/detect-long-strings.ql
+            ./codeql-queries/insecureHttpRequest.ql
+            ./codeql-queries/detectLongStrings.ql
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
