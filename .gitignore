@@ -2,3 +2,4 @@
 dist
 codeql-db
 results.sarif
+test-codeql-database
