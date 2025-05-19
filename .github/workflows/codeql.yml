@@ -19,7 +19,9 @@ on:
       - "**/*.ts" # Include all TypeScript files
       - "webpack.config.js" # Explicitly include Webpack configuration
   pull_request:
-    branches: [ "main" ]
+    branches: 
+      - "main"
+      - "dev/test-code" # Include pull requests to the dev/test-code branch
   schedule:
     - cron: '39 22 * * 1'
 
