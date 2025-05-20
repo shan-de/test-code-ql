@@ -1,0 +1,11 @@
+name: custom-queries
+version: 1.0.0
+description: A pack of custom CodeQL queries for JavaScript
+dependencies:
+  codeql/javascript-all: "*"
+
+queries:
+  - insecureHttpRequest.ql
+  - detectSuspiciousVariables.ql
+  - detectLongStrings.ql
+  - detectDynamicExecution.ql
