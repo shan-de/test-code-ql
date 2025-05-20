@@ -45,6 +45,13 @@ jobs:
         category: "/language:${{matrix.language}}"
         upload: true
 
+    - name: Debug SARIF File Location
+      run: |
+        echo "Listing contents of results/ directory..."
+        ls -la results/
+        echo "Listing contents of the current working directory..."
+        ls -la
+
     - name: Verify SARIF File
       run: |
         echo "Checking if SARIF file exists..."
