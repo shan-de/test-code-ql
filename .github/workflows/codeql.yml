@@ -45,11 +45,12 @@ jobs:
         category: "/language:${{matrix.language}}"
         upload: true
 
-    - name: Upload SARIF File
-      uses: actions/upload-artifact@v3
-      with:
-        name: codeql-results
-        path: results/*.sarif
-
-    - name: List Results Directory
-      run: ls -la results/
+    - name: Verify SARIF File
+      run: |
+        echo "Checking if SARIF file exists..."
+        if [ -f "results/javascript.sarif" ]; then
+          echo "SARIF file exists: results/javascript.sarif"
+        else
+          echo "SARIF file does not exist!"
+          exit 1
+        fi
