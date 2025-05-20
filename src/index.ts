@@ -14,7 +14,6 @@ http.get("http://example.com", (res) => {
 // Hardcoded sensitive information
 const apiKey = "12345-SECRET-API-KEY"; // Hardcoded API key
 
-// Insecure file write
 fs.writeFile("/tmp/test.txt", "This is a test", (err) => {
     if (err) {
         console.error("Error writing to file:", err);
