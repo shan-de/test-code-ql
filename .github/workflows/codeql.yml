@@ -1,17 +1,23 @@
 name: "CodeQL Advanced"
 
 on:
-  pull_request:
-    branches: [ "development" ]
+  push:
+    branches: [ "dev/test-code" ]
     paths:
       - "**/*.js" # Include all JavaScript files
       - "**/*.ts" # Include all TypeScript files
       - "webpack.config.js" # Explicitly include Webpack configuration
+  pull_request:
+    branches: 
+      - "main"
+      - "dev/test-code" # Include pull requests to the dev/test-code branch
+  schedule:
+    - cron: '39 22 * * 1'
 
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
     permissions:
       security-events: write
       packages: read
@@ -21,19 +27,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'typescript' ] # Add more languages as needed
+        language: # Define the languages to analyze
+          - javascript-typescript
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: ${{ matrix.language }}
-          queries: ./codeql-queries  # Ensure this is a valid query pack
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-        with:
-          category: "/language:${{matrix.language}}"
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: true # Upload results to GitHub Security tab
