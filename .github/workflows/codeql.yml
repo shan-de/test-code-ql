@@ -43,21 +43,4 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-        upload: false
-
-    - name: Debug SARIF File Location
-      run: |
-        echo "Listing contents of results/ directory..."
-        ls -la results/
-        echo "Listing contents of the current working directory..."
-        ls -la
-
-    - name: Verify SARIF File
-      run: |
-        echo "Checking if SARIF file exists..."
-        if [ -f "results/javascript.sarif" ]; then
-          echo "SARIF file exists: results/javascript.sarif"
-        else
-          echo "SARIF file does not exist!"
-          exit 1
-        fi
+        upload: true
