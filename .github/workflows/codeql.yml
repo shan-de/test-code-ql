@@ -11,8 +11,9 @@ on:
     branches: 
       - "main"
       - "dev/test-code" # Include pull requests to the dev/test-code branch
-  schedule:
-    - cron: '39 22 * * 1'
+  workflow_dispatch
+  # schedule:
+  #   - cron: '39 22 * * 1'
 
 jobs:
   analyze:
