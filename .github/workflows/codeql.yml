@@ -43,7 +43,7 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-        upload: true
+        upload: false
 
     - name: Debug SARIF File Location
       run: |
