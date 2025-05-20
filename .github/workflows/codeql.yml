@@ -44,3 +44,12 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         upload: true
+
+    - name: Upload SARIF File
+      uses: actions/upload-artifact@v3
+      with:
+        name: codeql-results
+        path: results/*.sarif
+
+    - name: List Results Directory
+      run: ls -la results/
