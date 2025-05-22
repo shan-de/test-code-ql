@@ -9,6 +9,9 @@ import javascript
  * @tags security
  */
 
-select * from CallExpression call
-where call.getCallee().getName() = "http" and
-      call.getArgument(0).getValue().regexpMatch("^http://.*")
+from MethodCallExpr call, StringLiteral url
+where
+  (call.getMethodName() = "get" or call.getMethodName() = "request") and
+  url = call.getArgument(0) and
+  url.getValue().indexOf("http://") = 0
+select call, "Insecure HTTP request detected."
