@@ -1,13 +1,12 @@
-import javascript
-
-/**
- * @id insecure_http_request
+ /**
+ * This is an automatically generated file
  * @name Insecure HTTP Request Detection
- * @description Detects insecure HTTP requests (http instead of https)
  * @kind problem
  * @problem.severity warning
- * @tags security
+ * @id jcustom-queries-insecure-http-request
  */
+
+import javascript
 
 from MethodCallExpr call, StringLiteral url
 where
