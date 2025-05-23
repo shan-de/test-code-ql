@@ -2,7 +2,7 @@ import http from "http";
 import child_process from "child_process";
 
 // Insecure HTTP request
-http.get("https://example.com", (res) => {
+http.get("http://example.com", (res) => {
     console.log("Insecure HTTP request made.");
 });
 
