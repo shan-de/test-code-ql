@@ -2,7 +2,7 @@
  * This is an automatically generated file
  * @name Insecure HTTP Request Detection
  * @kind problem
- * @problem.severity warning
+ * @problem.severity critical
  * @id jcustom-queries-insecure-http-request
  */
 
