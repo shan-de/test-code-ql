@@ -19,4 +19,4 @@ function fetchData(url) {
 }
 
 // Insecure HTTP request
-fetchData('https://example.com/api/data');
+fetchData('http://example.com/api/data');
