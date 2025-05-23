@@ -9,3 +9,4 @@ queries:
   - detectSuspiciousVariables.ql
   - detectLongStrings.ql
   - detectDynamicExecution.ql
+  - detectGlobalAssignment.ql
